@@ -96,5 +96,5 @@ export async function getPublisher(jarName: string): Promise<void> {
   }
 
   core.exportVariable('PUBLISHER_JAR', toolPath);
-  core.setOutput('publisher-version', publisherVersion);
+  core.setOutput('publisherVersion', publisherVersion);
 }
