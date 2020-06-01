@@ -12,5 +12,5 @@ inputs:
     required: false
   
 runs:
-  using: 'java'
+  using: 'node12'
   main: 'dist/index.js'
