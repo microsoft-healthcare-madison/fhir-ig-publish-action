@@ -1,101 +1,37 @@
-<p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
-</p>
+# FHIR IG Publish Action Info
 
-# Create a JavaScript Action using TypeScript
+This repo contains a GitHub Action for downloading and running the FHIR IG Publisher on a repository.
 
-Use this template to bootstrap the creation of a JavaScript action.:rocket:
+# Documentation
 
-This template includes compilication support, tests, a validation workflow, publishing, and versioning guidance.  
+## Prerequisites
 
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
+* Repository must be checked out: [actions/checkout@v2](https://github.com/actions/checkout)
+* Java must be installed: [actions/setup-java](https://github.com/actions/setup-java), version 14+ is required
 
-## Create an action from this template
 
-Click the `Use this Template` and provide the new repo details for your action
+## More Information
 
-## Code in Master
 
-Install the dependencies  
-```bash
-$ npm install
-```
+## Contributing
+This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
+the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
-Build the typescript and package it for distribution
-```bash
-$ npm run build && npm run pack
-```
+When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
+a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
+provided by the bot. You will only need to do this once across all repos using our CLA.
 
-Run the tests :heavy_check_mark:  
-```bash
-$ npm test
+There are many other ways to contribute:
+* [Submit bugs](https://github.com/fhir-ig-publish-action/issues) and help us verify fixes as they are checked in.
+* Review the [source code changes](https://github.com/fhir-ig-publish-action/pulls).
+* Engage with users and developers on [Official FHIR Zulip](https://chat.fhir.org/)
+* [Contribute bug fixes](CONTRIBUTING.md).
 
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
+See [Contributing](CONTRIBUTING.md) for more information.
 
-...
-```
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## Change action.yml
-
-The action.yml contains defines the inputs and output for your action.
-
-Update the action.yml with your name, description, inputs and outputs for your action.
-
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
-
-## Change the Code
-
-Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
-
-```javascript
-import * as core from '@actions/core';
-...
-
-async function run() {
-  try { 
-      ...
-  } 
-  catch (error) {
-    core.setFailed(error.message);
-  }
-}
-
-run()
-```
-
-See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
-
-## Publish to a distribution branch
-
-Actions are run from GitHub repos so we will checkin the packed dist folder. 
-
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
-```bash
-$ npm run pack
-$ git add dist
-$ git commit -a -m "prod dependencies"
-$ git push origin releases/v1
-```
-
-Your action is now published! :rocket: 
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-
-## Validate
-
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml)])
-
-```yaml
-uses: ./
-with:
-  milliseconds: 1000
-```
-
-See the [actions tab](https://github.com/actions/javascript-action/actions) for runs of this action! :rocket:
-
-## Usage:
-
-After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
+FHIR&reg; is the registered trademark of HL7 and is used with the permission of HL7. 

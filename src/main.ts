@@ -1,19 +1,24 @@
-import * as core from '@actions/core'
-import {wait} from './wait'
+import * as core from '@actions/core';
+import * as installer from './installer';
+import * as exec from '@actions/exec';
+
+const PUBLISHER_JAR_NAME = 'org.hl7.fhir.publisher.jar';
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`)
-
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    await installer.getPublisher(PUBLISHER_JAR_NAME);
+    if (process.env.PUBLISHER_JAR) {
+      await exec.exec('java', [
+        '-Xmx2G',
+        '-jar',
+        `${process.env.PUBLISHER_JAR}`,
+        '-ig',
+        'ig.ini'
+      ]);
+    }
   } catch (error) {
-    core.setFailed(error.message)
+    core.setFailed(error.message);
   }
 }
 
-run()
+run();
