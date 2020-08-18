@@ -9,6 +9,29 @@ This repo contains a GitHub Action for downloading and running the FHIR IG Publi
 * Repository must be checked out: [actions/checkout@v2](https://github.com/actions/checkout)
 * Java must be installed: [actions/setup-java](https://github.com/actions/setup-java), version 14+ is required
 
+## Example
+
+The following steps can be used in your `build.steps[]` within a Github Actions pipeline to invoke the FHIR IG Publisher:
+
+```yaml
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Java v15
+      uses: actions/setup-java@v1
+      with:
+        java-version: 15
+
+    - name: Set up Jekyll
+      uses: helaili/jekyll-action@2.0.1
+
+    - name: Run IG publisher
+      uses: microsoft-healthcare-madison/fhir-ig-publish-action@v1.0.0-beta
+
+```
+
+For a full example including invocation of Sushi before the build, see https://github.com/argonautproject/subscription-backport-ig/blob/master/.github/workflows/build.yml.
+
 
 ## More Information
 
